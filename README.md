@@ -1,7 +1,5 @@
 # 🌐 Global E-Commerce Platform with Geo-Redundancy
 
-This project is tailored for Senior DevOps Engineers aiming to demonstrate expertise in Helm, Kubernetes, multi-cloud management, and advanced deployment strategies. The project focuses on building a global e-commerce platform with geo-redundancy and high availability across multiple cloud providers and regions, including AWS, GCP, and Azure.
-
 ## Overview
 
 The project emphasizes the implementation of advanced Helm charts, multi-cloud Kubernetes clusters, dynamic scaling, data replication, and cross-region failover strategies to ensure the resilience, scalability, and security of the e-commerce platform.
