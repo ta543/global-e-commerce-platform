@@ -12,6 +12,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      KUBECONFIG: ${{ secrets.KUBECONFIG }}
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -34,18 +37,18 @@ jobs:
       run: |
         helm lint global-e-commerce-platform/helm-charts/monitoring
 
-    - name: Package Helm chart
+    - name: Package Helm charts
       run: |
-        helm package global-e-commerce-platform/helm-charts/monitoring -d helm-charts/monitoring/charts/
+        helm package global-e-commerce-platform/helm-charts/monitoring -d helm-charts/monitoring/dist
 
-    - name: Set Kubernetes context
+    - name: Set up Kubernetes context
       uses: azure/k8s-set-context@v1
       with:
-        kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
+        kubeconfig: ${{ env.KUBECONFIG }}
 
     - name: Deploy Helm chart to Kubernetes
       uses: azure/k8s-deploy@v1
       with:
         namespace: default
-        manifests: ./helm-charts/monitoring/dist/
+        manifests: /Users/chappy/chappy/Coding/Projects/free-time-projects/Project/Helm/global-e-commerce-platform/global-e-commerce-platform/helm-charts/monitoring/dist/*.tgz
         action: deploy
