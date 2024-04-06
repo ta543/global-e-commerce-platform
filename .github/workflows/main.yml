@@ -39,3 +39,5 @@ jobs:
         kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
         namespace: default
         manifests: global-e-commerce-platform/helm-charts/monitoring/dist/*.tgz
+
+        //
