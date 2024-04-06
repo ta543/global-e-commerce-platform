@@ -40,4 +40,3 @@ jobs:
         namespace: default
         manifests: global-e-commerce-platform/helm-charts/monitoring/dist/*.tgz
 
-        //
