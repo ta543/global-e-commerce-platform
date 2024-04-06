@@ -47,10 +47,10 @@ jobs:
 #        method: kubeconfig
 #      env:
 #        KUBECONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
-
-    - name: Deploy Helm chart to Kubernetes
-      uses: azure/k8s-deploy@v1
-      with:
-        namespace: default
-        manifests: /Users/chappy/chappy/Coding/Projects/free-time-projects/Project/Helm/global-e-commerce-platform/global-e-commerce-platform/helm-charts/monitoring/dist/*.tgz
-        action: deploy
+#
+#    - name: Deploy Helm chart to Kubernetes
+#      uses: azure/k8s-deploy@v1
+#      with:
+#        namespace: default
+#        manifests: /Users/chappy/chappy/Coding/Projects/free-time-projects/Project/Helm/global-e-commerce-platform/global-e-commerce-platform/helm-charts/monitoring/dist/*.tgz
+#        action: deploy
