@@ -38,9 +38,14 @@ jobs:
       run: |
         helm package global-e-commerce-platform/helm-charts/monitoring -d helm-charts/monitoring/dist
 
+    - name: Set Kubernetes context
+      uses: azure/k8s-set-context@v1
+      with:
+        kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
+
     - name: Deploy Helm chart to Kubernetes
       uses: azure/k8s-deploy@v1
       with:
-        kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
         namespace: default
-        manifests: global-e-commerce-platform/helm-charts/monitoring/dist/*.tgz
+        manifests: ./helm-charts/monitoring/dist/*.tgz
+        action: deploy
