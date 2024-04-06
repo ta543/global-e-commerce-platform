@@ -23,19 +23,19 @@ jobs:
 
     - name: Install dependencies
       run: |
-        helm dependency update helm-charts/monitoring
+        helm dependency update global-e-commerce-platform/helm-charts/monitoring
 
     - name: Lint Helm chart
       run: |
-        helm lint helm-charts/monitoring
+        helm lint global-e-commerce-platform/helm-charts/monitoring
 
     - name: Package Helm chart
       run: |
-        helm package helm-charts/monitoring -d helm-charts/monitoring/dist
+        helm package global-e-commerce-platform/helm-charts/monitoring -d helm-charts/monitoring/dist
 
     - name: Deploy Helm chart to Kubernetes
       uses: azure/k8s-deploy@v1
       with:
         kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
         namespace: default
-        manifests: helm-charts/monitoring/dist/*.tgz
+        manifests: global-e-commerce-platform/helm-charts/monitoring/dist/*.tgz
