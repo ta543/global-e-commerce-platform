@@ -44,7 +44,9 @@ jobs:
     - name: Set up Kubernetes context
       uses: azure/k8s-set-context@v1
       with:
-        kubeconfig: ${{ env.KUBECONFIG }}
+        method: kubeconfig
+      env:
+        KUBECONFIG: ${{ secrets.KUBECONFIG }}
 
     - name: Deploy Helm chart to Kubernetes
       uses: azure/k8s-deploy@v1
