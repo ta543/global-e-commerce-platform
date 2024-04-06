@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "e-commerce-app.fullname" . }}
+  labels:
+    {{- include "e-commerce-app.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "e-commerce-app.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "e-commerce-app.name" . }}
+    spec:
+      containers:
+      - name: e-commerce-app
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: {{ .Values.service.port }}
+        livenessProbe:
+          httpGet:
+            path: /
+            port: http
+          initialDelaySeconds: 45
+          periodSeconds: 20
+        readinessProbe:
+          httpGet:
+            path: /
+            port: http
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"

@@ -1,0 +1,12 @@
+prometheus:
+  enabled: true
+  server:
+    resources: {}
+
+grafana:
+  enabled: true
+  resources: {}
+  adminPassword: changeThis
+  ingress:
+    enabled: true
+    hostname: grafana.skyshop.example.com
