@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      KUBECONFIG: ${{ secrets.KUBECONFIG }}
+      KUBECONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
 
     steps:
     - name: Checkout repository
@@ -46,7 +46,7 @@ jobs:
       with:
         method: kubeconfig
       env:
-        KUBECONFIG: ${{ secrets.KUBECONFIG }}
+        KUBECONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
 
     - name: Deploy Helm chart to Kubernetes
       uses: azure/k8s-deploy@v1
