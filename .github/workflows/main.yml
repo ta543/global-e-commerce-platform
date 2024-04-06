@@ -47,5 +47,5 @@ jobs:
       uses: azure/k8s-deploy@v1
       with:
         namespace: default
-        manifests: ./helm-charts/monitoring/charts/
+        manifests: ./helm-charts/monitoring/dist/
         action: deploy
